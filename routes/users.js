@@ -1,36 +1,15 @@
 import express from "express";
-import uniqid from "uniqid";
 
+import { createUser, getUser, updateUser, deleteUser } from "../controller/users";
 const router = express.Router();
 
-let user = [];
 
-router.get("/", (req, res) => {
-  res.send(user);
-});
+router.get("/", getUser);
 
-router.post("/", (req, res) => {
-  const newUser = req.body;
-  const userWithId = { ...newUser, id: uniqid() };
-  user.push(userWithId);
-  console.log(userWithId);
-  res.send(user);
-});
+router.post("/", createUser);
 
-router.put("/:id", (req, res) => {
-  const updatedUser = req.body;
-  user.forEach((ele) => {
-    if (ele.email == updatedUser.email) {
-      console.log(ele);
-    }
-  });
-  res.send("USER ADDED SUCCESSFULLY");
-});
+router.put("/:id", updateUser);
 
-router.delete("/:id", (req, res) => {
-  const id = req.params.id;
-  user = user.filter((item) => item.id != id);
-  res.send(user);
-});
+router.delete("/:id", deleteUser);
 
 export default router;
