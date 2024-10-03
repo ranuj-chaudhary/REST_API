@@ -4,12 +4,13 @@
 // STEP 4th LISTEN TO PORT TO START SERVER
 // STEP 5th INSTALL nodemon to run server on any change
 
+
 // ADDITIONAL TOOL FOR BROWSER TO INSTALL
 import express from "express";
 import bodyParser from "body-parser";
 
 // when we import default we can name them anything
-import usersRoute from "./routes/users.js";
+import usersRoute from "./basics layers/routes/users.js";
 
 // set up express
 const app = express();
@@ -21,7 +22,7 @@ app.use(bodyParser.json());
 // ROUTES
 
 // all routes here starting with /users
-app.use('/users', usersRoute)
+app.use("/users", usersRoute);
 
 app.get("/", (req, res) => {
   res.send("this is the response");

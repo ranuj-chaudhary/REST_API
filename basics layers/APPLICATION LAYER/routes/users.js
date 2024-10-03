@@ -1,10 +1,16 @@
 import express from "express";
 
-import { createUser, getUser, updateUser, deleteUser } from "../controller/users";
+import {
+  createUser,
+  getUser,
+  updateUser,
+  deleteUser,
+} from "../APPLICATION LAYER/controller/users";
 const router = express.Router();
 
-
 router.get("/", getUser);
+
+
 
 router.post("/", createUser);
 
